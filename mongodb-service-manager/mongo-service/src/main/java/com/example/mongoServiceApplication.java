@@ -12,6 +12,14 @@ import org.springframework.http.converter.HttpMessageConverter;
 
 import java.util.stream.Collectors;
 
+/**
+ * @Classname FeignConfig
+ * @Created by huangman
+ * @Description TODO
+ * @Date 4/22/21 7:37 PM
+ */
+
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = {

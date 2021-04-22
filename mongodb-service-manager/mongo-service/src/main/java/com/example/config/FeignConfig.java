@@ -18,12 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 /**
  * @Classname FeignConfig
- * @Created by panjiongliang
+ * @Created by huangman
  * @Description TODO
- * @Date 2020/5/21 18:14
+ * @Date 4/22/21 7:37 PM
  */
+
 @SpringBootConfiguration
 public class FeignConfig {
 
