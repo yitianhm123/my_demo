@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @Classname FeignConfig
  * @Created by huangman
  * @Description TODO
- * @Date 4/22/21 7:37 PM
+ * @Date 4/22/21 8:28 PM
  */
 
 @RestController
