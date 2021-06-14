@@ -83,7 +83,7 @@ public class EsServiceApplicationTests {
                             HouseIndexTemplate.builder().houseId(atomicInteger.longValue()).
                                     title("hm "+atomicInteger.toString())
                                     .name("Tom_" + atomicInteger.intValue()).build();
-//                    houseRepository.save(houseIndexTemplate);
+                    houseRepository.save(houseIndexTemplate);
                 }
             });
         }
@@ -142,18 +142,18 @@ public class EsServiceApplicationTests {
 
         System.out.print(JSONUtils.toJSONString(houseIndexTemplates));
 
-       //  判断是否有内容
-        while (scroll.hasContent()) {
-            List<HouseIndexTemplate> content = scroll.getContent();
-            // 业务逻辑省略
-            //取下一页，scrollId在es服务器上可能会发生变化，需要用最新的。发起continueScroll请求会重新刷新快照保留时间
-            scroll = (ScrolledPage<HouseIndexTemplate>) elasticsearchTemplate.continueScroll(scroll.getScrollId(), 3000, HouseIndexTemplate.class);
-            System.out.println("content"+JSONArray.toJSONString(content));
-
-        }
-
-         最后释放查询
-        elasticsearchTemplate.clearScroll(scroll.getScrollId());
+//       //  判断是否有内容
+//        while (scroll.hasContent()) {
+//            List<HouseIndexTemplate> content = scroll.getContent();
+//            // 业务逻辑省略
+//            //取下一页，scrollId在es服务器上可能会发生变化，需要用最新的。发起continueScroll请求会重新刷新快照保留时间
+//            scroll = (ScrolledPage<HouseIndexTemplate>) elasticsearchTemplate.continueScroll(scroll.getScrollId(), 3000, HouseIndexTemplate.class);
+//            System.out.println("content"+JSONArray.toJSONString(content));
+//
+//        }
+//
+//         最后释放查询
+//        elasticsearchTemplate.clearScroll(scroll.getScrollId());
     }
 
 }
