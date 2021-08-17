@@ -8,8 +8,10 @@
 		<module>mongodb-service-manager</module>
 		<module>gateway-service-manager</module>
         <module>rabbitmq</module>
+        <module>sem-service-manager</module>
+		<module>common-service</module>
 
-    </modules>
+	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

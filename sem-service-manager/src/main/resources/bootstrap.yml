@@ -1,8 +1,8 @@
 server:
-  port: 8071
+  port: 8081
 spring:
   application:
-    name: my-mongo-service
+    name: my-sem-service
   cloud:
     consul:
       host: localhost
