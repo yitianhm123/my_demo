@@ -50,8 +50,6 @@ public class HouseIndexTemplateService<T> {
     private ElasticsearchTemplate elasticsearchTemplate;
 
 
-
-
     //    @Override
     public List<T> query(String keyword, Class<T> clazz) {
         SearchQuery searchQuery = new NativeSearchQueryBuilder()

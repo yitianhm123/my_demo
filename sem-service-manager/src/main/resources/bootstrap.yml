@@ -43,3 +43,8 @@ spring:
           enabled: true
           delay: 10000
           wait-time: 30
+
+#放行配置
+permit:
+  endpoints:
+    - /getDataFromDb
