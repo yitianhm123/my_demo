@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 @Data
-@Document(indexName = "houseindex",type = "house")
+@Document(indexName = "houseindex", type = "house")
 @ToString
 public class HouseInfo {
 
@@ -26,7 +26,7 @@ public class HouseInfo {
     private String name;
 
     /**
-     *价格
+     * 价格
      */
     private double price;
 

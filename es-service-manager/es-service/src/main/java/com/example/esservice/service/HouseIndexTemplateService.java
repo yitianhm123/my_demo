@@ -5,7 +5,6 @@ import com.example.esservice.es.vo.RequestVo;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.micrometer.core.instrument.util.JsonUtils;
-import org.apache.lucene.queryparser.xml.builders.BooleanQueryBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.text.Text;
 import org.elasticsearch.index.query.*;

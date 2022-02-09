@@ -9,5 +9,4 @@ public class HouseEsQueryVo {
     private Integer pageNum;
 
 
-
 }

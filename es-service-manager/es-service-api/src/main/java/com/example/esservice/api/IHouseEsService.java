@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "my-es-service",contextId = "house-es",path = "house")
+@FeignClient(value = "my-es-service", contextId = "house-es", path = "house")
 public interface IHouseEsService {
 
     @GetMapping("/getHouseInfoById")
