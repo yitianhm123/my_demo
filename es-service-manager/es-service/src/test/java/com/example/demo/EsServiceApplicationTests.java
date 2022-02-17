@@ -3,28 +3,14 @@ package com.example.demo;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.example.esservice.EsServiceApplication;
 import com.example.esservice.es.HouseIndexTemplate;
-
 import com.example.esservice.es.reporsitory.HouseRepository;
 import com.example.esservice.es.reporsitory.OwnerRepository;
-
-
 import com.example.esservice.util.Jsonutil;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.deser.impl.ObjectIdReader;
 import lombok.extern.slf4j.Slf4j;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONUtil;
-import org.apache.ibatis.executor.ResultExtractor;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.ElasticsearchClient;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.filter.FilterAggregationBuilder;
 import org.junit.Test;
@@ -34,7 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.ResultsExtractor;
-import org.springframework.data.elasticsearch.core.ScrolledPage;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -42,7 +27,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 

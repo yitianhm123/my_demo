@@ -6,23 +6,19 @@ import com.example.esservice.es.HouseIndexTemplate;
 import com.example.esservice.es.reporsitory.HouseRepository;
 import com.example.esservice.vo.HouseInfo;
 import com.example.esservice.vo.ReqeustESBo;
-import com.google.gson.JsonObject;
-import io.micrometer.core.instrument.util.JsonUtils;
-import org.apache.commons.io.input.ReaderInputStream;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 
 @Service
