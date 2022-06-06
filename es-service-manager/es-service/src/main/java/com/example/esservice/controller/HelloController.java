@@ -30,7 +30,6 @@ public class HelloController {
     @Resource
     private BaseSearchService baseSearchService;
 
-
     @Resource
     private FileServiceImpl fileService;
 
