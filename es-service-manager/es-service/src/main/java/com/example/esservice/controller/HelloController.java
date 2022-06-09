@@ -62,8 +62,8 @@ public class HelloController {
 
 
     @PostMapping(value = "getFile")
-    public String getFILe(){
-        String datetime = DateUtils.formatDate(new Date(),"yyyyMMdd");
+    public String getFILe(@RequestParam String dateTime){
+        String datetime = dateTime;
         System.out.println("datetime:  "+datetime);
         String prefix = config.getDirName();
         log.info("dirname ,{}",prefix);
