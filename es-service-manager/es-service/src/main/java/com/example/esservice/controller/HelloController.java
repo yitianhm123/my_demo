@@ -68,7 +68,7 @@ public class HelloController {
         String prefix = config.getDirName();
         log.info("dirname ,{}",prefix);
         String filename = valueConfig.getInputFilePath()+datetime+".csv";
-        String outfileName = "orderfile"
+        String outfileName = "orderfile";
 ;        String dir = prefix+datetime+"/";
         File file =new File(filename);
         if(file==null){

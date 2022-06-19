@@ -1,0 +1,50 @@
+def getDate() {
+    // 定义一个版本号作为当次构建的版本，输出结果 20191210175842_69
+    return new Date().format('yyyyMMddHHmm')
+}
+pipeline {
+    agent any
+    environment {
+        GIT_TAG = sh(script: "git describe --tags --always", returnStdout:true).trim()
+        date=getDate()
+		
+    }
+    stages {
+		stage('mvn'){
+		    steps{
+		        dir("${env.WORKSPACE}"){
+		            sh '''
+		               /usr/local/maven/bin/mvn -B -f /home/vevor/.jenkins/workspace/es-service/es-service-manager/pom.xml clean install -Dmaven.test.skip=true
+		               '''
+		        }
+		    }
+		}
+		stage('build'){
+			steps{
+			    sh '''
+			    sudo -i
+			    cd /home/vevor/.jenkins/workspace/es-service/es-service-manager/es-service-service/target
+			    jar=`ls -lt *-spring-boot.jar|head -1|awk '{print $9}'`
+			    cat > Dockerfile <<EOF\nFROM jdk:1.8\nCOPY $jar /var/lib/\nENTRYPOINT ["java","-jar","-Dspring.cloud.consul.host=47.102.128.87","-Dspring.cloud.consul.port=8500","-Dspring.cloud.consul.config.default-context=dev","-Dspring.cloud.consul.config.data-key=huangman","-Dspring.cloud.consul.discovery.ip-address=47.102.128.87","-Dspring.cloud.consul.discovery.port=8070","/var/lib/$jar"]\nEXPOSE 8070\nEOF
+			    tag=$GIT_TAG
+			    docker_tag=$date-${tag:0-8:8}
+			    cd /home/vevor/.jenkins/workspace/es-service/es-service-manager/es-service-service/target
+			    sudo docker build -t scp-inventory:$docker_tag .
+			    sudo docker tag es-service:$docker_tag registry.cn-shanghai.aliyuncs.com/vevor_mirroring/es-service:$docker_tag
+			    sudo docker push registry.cn-shanghai.aliyuncs.com/vevor_mirroring/es-service:$docker_tag
+			    sudo docker rmi es-service:$docker_tag && sudo docker rmi registry.cn-shanghai.aliyuncs.com/vevor_mirroring/es-service:$docker_tag
+   	          '''
+			}
+		}
+		stage('deploy'){
+	        steps{  
+	          sh '''
+	             tag=$GIT_TAG
+	             echo 123
+			     docker_tag=$date-${tag:0-8:8}
+		         sudo kubectl set image deployment/es-service es-service=registry.cn-shanghai.aliyuncs.com/vevor_mirroring/es-service:$docker_tag
+		       '''
+		   }     
+		}
+    }
+}
